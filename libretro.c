@@ -385,8 +385,8 @@ static void update_input(void)
 
    input_poll_cb();
 
-   /* Can possibly support up to 6 players but is currently set for 2 */
-   for (i = 0; i < 2; i++)
+   unsigned player_count = sizeof(internal_input_state) / sizeof(*internal_input_state);
+   for (i = 0; i < player_count; i++)
    {
       if (input_state_cb(i, RETRO_DEVICE_JOYPAD, 0, RETRO_DEVICE_ID_JOYPAD_UP))
          internal_input_state[i].buttons |= INPUTBUTTONUP;
